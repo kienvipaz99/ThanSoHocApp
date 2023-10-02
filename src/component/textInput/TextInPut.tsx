@@ -3,6 +3,8 @@ import {
   StyleProp,
   StyleSheet,
   TextInput,
+  TextInputProps,
+  TextInputState,
   TextStyle,
 } from 'react-native';
 import React from 'react';
@@ -13,12 +15,32 @@ import {fonts} from '../../res/fonts';
 export default function TextInPut({
   keyboardType,
   style,
+  maxLength,
+  text,
+  onChangText,
+  inputRef,
+  options,
 }: {
   keyboardType?: KeyboardTypeOptions;
   style?: StyleProp<TextStyle>;
+  maxLength?: number;
+  text?: string;
+  onChangText?: (val: string) => void;
+  inputRef?: any;
+  options?: TextInputProps;
 }) {
   return (
-    <TextInput style={[styles.txtInput, style]} keyboardType={keyboardType} />
+    <TextInput
+      ref={inputRef}
+      style={[styles.txtInput, style]}
+      keyboardType={keyboardType}
+      maxLength={maxLength}
+      value={text}
+      blurOnSubmit={false}
+      returnKeyType="next"
+      onChangeText={onChangText}
+      {...options}
+    />
   );
 }
 

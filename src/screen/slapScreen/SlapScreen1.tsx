@@ -26,11 +26,7 @@ export default function SlapScreen1({
   return (
     <View style={styles.container}>
       <Image source={images.slapScreen} style={styles.img} />
-      <Text
-        onPress={() => navigation.navigate('SlapScreen2')}
-        style={styles.txt}>
-        THẦN SỐ HỌC
-      </Text>
+      <Text style={styles.txt}>THẦN SỐ HỌC</Text>
     </View>
   );
 }

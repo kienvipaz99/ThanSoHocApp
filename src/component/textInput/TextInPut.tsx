@@ -47,11 +47,11 @@ export default function TextInPut({
 const styles = StyleSheet.create({
   txtInput: {
     width: sizes.width * 0.55,
-    borderColor: colors.white,
+    borderColor: colors.background,
     borderBottomWidth: 1,
     height: 50,
     fontFamily: fonts.regular,
     fontSize: 20,
-    color: colors.white,
+    color: colors.background,
   },
 });

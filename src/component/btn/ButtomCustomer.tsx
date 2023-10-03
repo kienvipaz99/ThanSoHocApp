@@ -22,9 +22,9 @@ export default function ButtomCustomer({
 }) {
   return (
     <LinearGradient
-      colors={['#D82B50', '#5014B2']}
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
+      colors={['#ea7a2e', colors.white]}
+      start={{x: 0.7, y: 0}}
+      end={{x: 2, y: 0}}
       style={styles.linearGradient}>
       <TouchableOpacity style={styles.btn} onPress={onPress}>
         {isLoading ? (

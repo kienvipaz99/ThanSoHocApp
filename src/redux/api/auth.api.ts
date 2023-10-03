@@ -37,6 +37,29 @@ export const authApi = createApi({
         return [{type: tagTypes, id: 'LIST'}];
       },
     }),
+    getDataThanSo: build.query<ListApiResponse<DataNumbers>, string>({
+      query: () => ({
+        url: `datathanso`,
+        method: 'GET',
+      }),
+      providesTags(result) {
+        if (result?.data) {
+          const data = result.data;
+          return [
+            ...data.map(({id}) => ({
+              type: tagTypes,
+              id,
+            })),
+            {
+              type: tagTypes,
+              id: 'LIST',
+            },
+          ];
+        }
+        return [{type: tagTypes, id: 'LIST'}];
+      },
+    }),
   }),
 });
-export const {usePostInforMutation, useGetBannerQuery} = authApi;
+export const {usePostInforMutation, useGetBannerQuery, useGetDataThanSoQuery} =
+  authApi;

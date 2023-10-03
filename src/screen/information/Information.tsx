@@ -12,6 +12,8 @@ import {setDataUser} from '../../redux/state/InformationState';
 import {RootState} from '../../redux/store/store';
 import {usePostInforMutation} from '../../redux/api/auth.api';
 import {NavigationProp} from '@react-navigation/native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import ErrText from '../../component/errText/ErrText';
 
 export default function Information({
   navigation,
@@ -28,7 +30,10 @@ export default function Information({
   const input1Ref: any = useRef(null);
   const input2Ref: any = useRef(null);
   const input3Ref: any = useRef(null);
-
+  const [err, setErr] = useState({
+    name: '',
+    date: '',
+  });
   const handleTextChange1 = (text: string) => {
     setDay(text);
     if (text.length === 2) {
@@ -61,20 +66,27 @@ export default function Information({
           }),
         );
       }
-    } catch (error) {}
+    } catch (error: any) {
+      let err = error.data.errors;
+      setErr({
+        date: err?.birth_day,
+        name: err?.name,
+      });
+    }
   };
   return (
-    <View style={stylesCustom.conatainer}>
-      <View style={styles.viewImg}>
-        <Image source={images.background} />
-      </View>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <View style={styles.view}>
-        <Text style={styles.title}>Thông tin cá nhân</Text>
+        <Image source={images.logo} style={{marginTop: sizes.height * 0.12}} />
+
+        <Text style={styles.title}>THÔNG TIN CÁ NHÂN</Text>
+        <Image source={images.iconuser} style={{marginTop: 30}} />
         <View style={styles.view1}>
           <View style={stylesCustom.row}>
             <Text style={styles.txt}>Họ và Tên :</Text>
             <TextInPut text={name} onChangText={setName} />
           </View>
+          {err?.name && <ErrText err={err?.name} />}
           <View style={stylesCustom.row}>
             <Text style={styles.txt}>Ngày sinh :</Text>
             <View style={styles.view2}>
@@ -104,6 +116,7 @@ export default function Information({
               />
             </View>
           </View>
+          {err?.date && <ErrText err={err?.date} />}
         </View>
         <View style={styles.view3}>
           <ButtomCustomer
@@ -113,6 +126,15 @@ export default function Information({
           />
         </View>
       </View>
+      <Image
+        source={images.bottom}
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          width: sizes.width,
+          height: 180,
+        }}
+      />
     </View>
   );
 }
@@ -130,19 +152,19 @@ const styles = StyleSheet.create({
     height: sizes.height,
   },
   title: {
-    color: colors.white,
+    color: colors.background,
     fontSize: 30,
     fontFamily: fonts.medium,
-    marginTop: sizes.height * 0.15,
+    marginTop: sizes.height * 0.05,
   },
   txt: {
-    color: colors.white,
+    color: colors.background,
     fontFamily: fonts.regular,
     fontSize: 20,
     marginTop: 20,
     paddingRight: 20,
   },
-  view1: {width: sizes.width * 0.8, marginTop: sizes.height * 0.08},
+  view1: {width: sizes.width * 0.8, marginTop: sizes.height * 0.04},
   view2: {
     justifyContent: 'space-between',
     flexDirection: 'row',

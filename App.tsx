@@ -5,18 +5,14 @@ import {PersistGate} from 'redux-persist/integration/react';
 import Container from './src/container/Container';
 import {persistStore} from 'redux-persist';
 import store from './src/redux/store/store';
+import {colors} from './src/res/colors';
 const persistor = persistStore(store);
 export default function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <View style={styles.container}>
-          <StatusBar
-            backgroundColor="transparent"
-            barStyle={'light-content'}
-            showHideTransition={'fade'}
-            translucent={true}
-          />
+          <StatusBar backgroundColor="transparent" translucent={true} />
           <Container />
         </View>
       </PersistGate>

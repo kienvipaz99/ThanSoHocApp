@@ -35,7 +35,7 @@ export default function Banner() {
     return (
       <Pressable
         style={{
-          height: sizes.width * 0.4,
+          height: sizes.width * 0.5,
           width: sizes.width,
           alignItems: 'center',
         }}
@@ -44,7 +44,11 @@ export default function Banner() {
         }}>
         <Image
           source={{uri: item?.image}}
-          style={{height: sizes.width * 0.5, width: sizes.width * 0.9}}
+          style={{
+            height: sizes.width * 0.5,
+            width: sizes.width * 0.9,
+            borderRadius: 15,
+          }}
         />
       </Pressable>
     );
@@ -63,9 +67,7 @@ export default function Banner() {
       decelerationRate={'normal'}
       scrollEventThrottle={16}
       pagingEnabled
-      style={{marginTop: 50}}
+      style={{marginTop: 30}}
     />
   );
 }
-
-const styles = StyleSheet.create({});

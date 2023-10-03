@@ -34,14 +34,21 @@ export default stylesCustom = StyleSheet.create({
     height: sizes.height,
   },
   txt1: {
-    color: colors.white,
+    color: colors.black,
     fontFamily: fonts.regular,
     fontSize: 18,
     marginLeft: 15,
   },
   txt2: {
-    color: colors.white,
+    color: colors.black,
     fontFamily: fonts.regular,
     fontSize: 18,
+  },
+  viewContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    marginTop: sizes.height * 0.12,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
 });

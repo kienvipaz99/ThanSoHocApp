@@ -6,6 +6,7 @@ import sizes from '../../res/sizes';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {colors} from '../../res/colors';
 import {NavigationProp} from '@react-navigation/native';
+import HeaderCustom from '../../component/header/HeaderCustom';
 
 export default function Numerology({
   navigation,
@@ -13,24 +14,14 @@ export default function Numerology({
   navigation: NavigationProp<Record<string, any>>;
 }) {
   return (
-    <View style={stylesCustom.conatainer}>
-      <View style={stylesCustom.viewImg}>
-        <Image source={images.background} />
-      </View>
-      <View style={stylesCustom.view}>
-        <View style={styles.view}>
-          <Text style={[stylesCustom.txt, {alignSelf: 'center'}]}>
-            THẦN SỐ HỌC LÀ GÌ
-          </Text>
-          <Icon
-            name="caretleft"
-            color={colors.white}
-            size={30}
-            style={styles.icons}
-            onPress={() => navigation.goBack()}
-          />
-        </View>
-        <ScrollView style={styles.view4}>
+    <View style={stylesCustom.view}>
+      <HeaderCustom
+        title="thần số học là gì?"
+        back
+        onBackPress={() => navigation.goBack()}
+      />
+      <View style={stylesCustom.viewContainer}>
+        <ScrollView style={styles.view4} showsVerticalScrollIndicator={false}>
           <Text style={stylesCustom.txt2}>
             Đây là một bộ môn khoa học dựa trên việc quy đổi các chữ cái trong
             tên hoặc các chữ số trong ngày tháng năm sinh thành các con số từ 1
@@ -40,7 +31,8 @@ export default function Numerology({
             chọn công việc, đối tác, bạn bè phù hợp và cải thiện chất lượng cuộc
             sống.
           </Text>
-          <Text style={[stylesCustom.txt, {marginTop: 30}]}>
+          <Text
+            style={[stylesCustom.txt, {marginTop: 30, color: colors.black}]}>
             Ý nghĩa về các con số
           </Text>
           <Text style={{...stylesCustom.txt2, marginBottom: 40}}>
@@ -58,7 +50,8 @@ export default function Numerology({
             Số 6: Biểu thị cho sự trách nhiệm, tình yêu gia đình, yêu thương và
             sự chăm sóc. Đây là con số của sự cân đối và hòa hợp.{`\n`}
             Số 7: Tượng trưng cho sự nghiên cứu, sâu sắc, tâm linh và sự cân
-            nhắc.{`\n`}
+            nhắc.
+            {`\n`}
             Số 8: Biểu thị sự thịnh vượng, thành công về tài chính, quyền lực và
             quản lý. Nó cũng liên quan đến sự cân bằng giữa tâm hồn và vật chất.
             {`\n`}
@@ -71,6 +64,16 @@ export default function Numerology({
           </Text>
         </ScrollView>
       </View>
+      <Image
+        source={images.bottom}
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          width: sizes.width,
+          height: 180,
+          zIndex: -10,
+        }}
+      />
     </View>
   );
 }

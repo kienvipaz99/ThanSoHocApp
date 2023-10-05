@@ -1,4 +1,4 @@
-package com.numerology;
+package com.vithansohoc;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

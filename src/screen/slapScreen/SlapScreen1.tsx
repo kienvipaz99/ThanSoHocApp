@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import {NavigationProp} from '@react-navigation/native';
 import {fonts} from '../../res/fonts';
@@ -25,7 +25,13 @@ export default function SlapScreen1({
   });
   return (
     <View style={styles.container}>
-      <Image source={images.slapScreen} style={styles.img} />
+      <StatusBar
+        backgroundColor="transparent"
+        translucent={true}
+        barStyle={'light-content'}
+      />
+
+      <Image source={images.tshpng} style={styles.img} />
       <Text style={styles.txt}>THẦN SỐ HỌC</Text>
     </View>
   );
@@ -35,13 +41,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.background,
+    backgroundColor: '#023691',
   },
   txt: {
     fontFamily: fonts.sonsieOne,
     fontSize: 35,
     color: colors.white,
-    marginTop: 30,
+    marginTop: sizes.height * 0.06,
   },
-  img: {marginTop: sizes.height * 0.18},
+  img: {
+    marginTop: sizes.height * 0.18,
+    height: sizes.width * 0.7,
+    width: sizes.width * 0.7,
+    borderRadius: (sizes.width * 0.7) / 2,
+  },
 });

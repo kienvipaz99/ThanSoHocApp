@@ -18,12 +18,13 @@ export default function Banner() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      // Tính index tiếp theo
       //@ts-ignore
       const nextIndex = (currentIndex + 1) % data?.data?.length;
 
-      flatListRef.current?.scrollToIndex({animated: true, index: nextIndex});
-      setCurrentIndex(nextIndex);
+      if (data?.data) {
+        flatListRef.current?.scrollToIndex({animated: true, index: nextIndex});
+        setCurrentIndex(nextIndex);
+      }
     }, 5000);
 
     return () => {

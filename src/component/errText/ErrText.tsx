@@ -7,9 +7,7 @@ interface Props {
   err: string | undefined;
 }
 export default function ErrText(props: Props) {
-  return (
-    <>{props.err && <Text style={styles.txt}>{ErrorSubs(props.err)}</Text>}</>
-  );
+  return <>{props.err && <Text style={styles.txt}>{props.err}</Text>}</>;
 }
 
 const styles = StyleSheet.create({

@@ -27,7 +27,10 @@ export default function Setting({
             style={styles.btn}
             onPress={() => navigation.navigate('Numerology')}>
             <View style={stylesCustom.row}>
-              <FontAwesome name="grav" color={colors.black} size={30} />
+              <Image
+                source={images.tshpng}
+                style={{height: 30, width: 30, borderRadius: 60}}
+              />
               <Text style={stylesCustom.txt1}>Thần số học là gì?</Text>
             </View>
             <IconRight />

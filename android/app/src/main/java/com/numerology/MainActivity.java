@@ -1,4 +1,4 @@
-package com.numerology;
+package com.vithansohoc;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

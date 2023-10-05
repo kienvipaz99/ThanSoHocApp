@@ -9,7 +9,7 @@ export const authApi = createApi({
     postInfor: build.mutation<Numbers, Infos>({
       query(data) {
         return {
-          url: 'data',
+          url: 'pytago',
           method: 'POST',
           data,
         };
@@ -17,7 +17,7 @@ export const authApi = createApi({
     }),
     getBanner: build.query<ListApiResponse<Banner>, string>({
       query: () => ({
-        url: `banner`,
+        url: `banners`,
         method: 'GET',
       }),
       providesTags(result) {
@@ -39,7 +39,7 @@ export const authApi = createApi({
     }),
     getDataThanSo: build.query<ListApiResponse<DataNumbers>, string>({
       query: () => ({
-        url: `datathanso`,
+        url: `pytagos`,
         method: 'GET',
       }),
       providesTags(result) {

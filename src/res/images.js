@@ -9,5 +9,6 @@
     iconuser: require('../assets/images/iconuser.png'),
     logo: require('../assets/images/logo.png'),
     slapScreen: require('../assets/images/slapScreen.png'),
+    tshpng: require('../assets/images/tshpng.png'),
   }
   export default images

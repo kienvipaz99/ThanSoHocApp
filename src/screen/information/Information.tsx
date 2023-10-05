@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import stylesCustom from '../../res/stylesCustom';
 import images from '../../res/images';
@@ -14,6 +14,7 @@ import {usePostInforMutation} from '../../redux/api/auth.api';
 import {NavigationProp} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ErrText from '../../component/errText/ErrText';
+import {ErrorSubs} from '../../res/subErr';
 
 export default function Information({
   navigation,
@@ -32,8 +33,11 @@ export default function Information({
   const input3Ref: any = useRef(null);
   const [err, setErr] = useState({
     name: '',
-    date: '',
+    ngay: '',
+    thang: '',
+    nam: '',
   });
+
   const handleTextChange1 = (text: string) => {
     setDay(text);
     if (text.length === 2) {
@@ -50,8 +54,10 @@ export default function Information({
   const Submit = async () => {
     try {
       const data = await postInfo({
-        name: name,
-        birth_day: `${year}-${month}-${day}`,
+        full_name: name,
+        ngay: Number(day),
+        thang: Number(month),
+        nam: Number(year),
       }).unwrap();
 
       if (data) {
@@ -69,14 +75,20 @@ export default function Information({
     } catch (error: any) {
       let err = error.data.errors;
       setErr({
-        date: err?.birth_day,
-        name: err?.name,
+        ngay: ErrorSubs(err?.ngay),
+        thang: ErrorSubs(err?.thang),
+        nam: ErrorSubs(err?.nam),
+        name: ErrorSubs(err?.full_name),
       });
     }
   };
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={styles.view}>
+    <ScrollView
+      automaticallyAdjustKeyboardInsets={true}
+      keyboardDismissMode="interactive"
+      keyboardShouldPersistTaps={'handled'}
+      style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{alignItems: 'center'}}>
         <Image source={images.logo} style={{marginTop: sizes.height * 0.12}} />
 
         <Text style={styles.title}>THÔNG TIN CÁ NHÂN</Text>
@@ -116,7 +128,9 @@ export default function Information({
               />
             </View>
           </View>
-          {err?.date && <ErrText err={err?.date} />}
+          {(err?.ngay || err?.thang || err?.nam) && (
+            <ErrText err={'Ngày sinh cần điền đầy đủ'} />
+          )}
         </View>
         <View style={styles.view3}>
           <ButtomCustomer
@@ -126,16 +140,7 @@ export default function Information({
           />
         </View>
       </View>
-      <Image
-        source={images.bottom}
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          width: sizes.width,
-          height: 180,
-        }}
-      />
-    </View>
+    </ScrollView>
   );
 }
 

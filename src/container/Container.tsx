@@ -13,7 +13,7 @@ const Container = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName={'SlapScreen1'}
+        initialRouteName={'Information'}
         screenOptions={{
           headerShown: false,
         }}>

@@ -63,17 +63,17 @@ export default function Numerology({
             phương pháp cụ thể mà người thầy hoặc học giả sử dụng.
           </Text>
         </ScrollView>
+        <Image
+          source={images.bottom}
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            width: sizes.width,
+            height: 180,
+            zIndex: -10,
+          }}
+        />
       </View>
-      <Image
-        source={images.bottom}
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          width: sizes.width,
-          height: 180,
-          zIndex: -10,
-        }}
-      />
     </View>
   );
 }

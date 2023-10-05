@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.numerology"
+    namespace "com.vithansohoc"
     defaultConfig {
-        applicationId "com.numerology"
+        applicationId "com.vithansohoc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -6,37 +6,37 @@ interface Info {
   numbers?: Numbers;
 }
 interface Infos {
-  name: string;
-  birth_day: string;
+  full_name: string;
+  ngay: number;
+  thang: number;
+  nam: number;
 }
 interface Numbers {
-  name: string;
-  birth_day: string;
   duong_doi: number;
   su_menh: number;
+  lk_duongdoi_sumenh: number;
   linh_hon: number;
   nhan_cach: number;
-  chisongaysinh: number;
-  chisonam: number;
-  sucmanhtiemthuc: number;
-  tuduylitri: number;
-  chisothang: number;
-  sothieu: [number, number];
-  dam_me: number;
-  truongthanh: number;
-  dd_sm: number;
-  lh_nc: number;
-  chang: {
-    chang1: number;
-    chang2: number;
-    chang3: number;
-    chang4: number;
-  };
-  thachthuc: {
-    tt1: number;
-    tt2: number;
-    tt3: number;
-    tt4: number;
-  };
+  lk_linhhon_nhancach: number;
   can_bang: number;
+  ngay_sinh: number;
+  truong_thanh: number;
+  so_thieu: [number, number];
+  suc_manh_tiem_thuc: number;
+  tu_duy_li_tri: number;
+  dam_me: [number, number];
+  chi_so_nam: number;
+  chi_so_thang: number;
+  chang: {
+    chang_1: number;
+    chang_2: number;
+    chang_3: number;
+    chang_4: number;
+  };
+  thach_thuc: {
+    thachThuc_1: number;
+    thachThuc_2: number;
+    thachThuc_3: number;
+    thachThuc_4: number;
+  };
 }

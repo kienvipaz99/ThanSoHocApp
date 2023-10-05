@@ -58,11 +58,17 @@ export default function Home({
     numberss?: any;
   }) => {
     //@ts-ignore
-    const datass = data?.data[key][`key_${num}`];
+    const datass = data?.data[key][`tsh_${num}`];
+    const daXuatHien: any = {};
     if (numberss) {
       const aa = numberss.map((nums: number) => {
+        if (daXuatHien[nums]) {
+          return undefined;
+        }
+        daXuatHien[nums] = true;
+
         //@ts-ignore
-        return data?.data[key][`key_${nums}`];
+        return data?.data[key][`tsh_${nums}`];
       });
       setmeaning({
         numbers: numberss.join(', '),
@@ -160,31 +166,33 @@ export default function Home({
                 onPress={() =>
                   showData({
                     key: 12,
-                    num: numbers?.numbers?.dam_me,
+                    numberss: numbers?.numbers?.dam_me,
                   })
                 }>
                 <Text style={styles.txt3}>Đam mê</Text>
-                <Text style={styles.txt2}>{numbers?.numbers?.dam_me}</Text>
+                <Text style={styles.txt2}>
+                  {numbers?.numbers?.dam_me?.join(', ')}
+                </Text>
               </Pressable>
               <Pressable
                 style={styles.round}
                 onPress={() => {
                   showData({
-                    key: 12,
+                    key: 10,
                     numberss: [
-                      numbers?.numbers?.thachthuc.tt1,
-                      numbers?.numbers?.thachthuc.tt2,
-                      numbers?.numbers?.thachthuc.tt3,
-                      numbers?.numbers?.thachthuc.tt4,
+                      numbers?.numbers?.thach_thuc?.thachThuc_1,
+                      numbers?.numbers?.thach_thuc?.thachThuc_2,
+                      numbers?.numbers?.thach_thuc?.thachThuc_3,
+                      numbers?.numbers?.thach_thuc?.thachThuc_4,
                     ],
                   });
                 }}>
                 <Text style={styles.txt3}>Thách thức</Text>
                 <Text style={styles.txt2}>
-                  {numbers?.numbers?.thachthuc.tt1},
-                  {numbers?.numbers?.thachthuc.tt2},
-                  {numbers?.numbers?.thachthuc.tt3},
-                  {numbers?.numbers?.thachthuc.tt4}
+                  {numbers?.numbers?.thach_thuc?.thachThuc_1},
+                  {numbers?.numbers?.thach_thuc?.thachThuc_2},
+                  {numbers?.numbers?.thach_thuc?.thachThuc_3},
+                  {numbers?.numbers?.thach_thuc?.thachThuc_4}
                 </Text>
               </Pressable>
               {show && (
@@ -194,23 +202,15 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 2,
-                        num: numbers?.numbers?.dd_sm,
+                        num: numbers?.numbers?.lk_duongdoi_sumenh,
                       })
                     }>
                     <Text style={styles.txt3}>Liên kết ĐĐ SM</Text>
-                    <Text style={styles.txt2}>{numbers?.numbers?.dd_sm}</Text>
+                    <Text style={styles.txt2}>
+                      {numbers?.numbers?.lk_duongdoi_sumenh}
+                    </Text>
                   </Pressable>
-                  <Pressable
-                    style={styles.round}
-                    onPress={() =>
-                      showData({
-                        key: 16,
-                        num: numbers?.numbers?.lh_nc,
-                      })
-                    }>
-                    <Text style={styles.txt3}>Liên kết LH NC</Text>
-                    <Text style={styles.txt2}>{numbers?.numbers?.lh_nc}</Text>
-                  </Pressable>
+
                   <Pressable
                     style={styles.round}
                     onPress={() =>
@@ -229,12 +229,12 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 5,
-                        num: numbers?.numbers?.chisongaysinh,
+                        num: numbers?.numbers?.ngay_sinh,
                       })
                     }>
                     <Text style={styles.txt3}>Ngày sinh</Text>
                     <Text style={styles.txt2}>
-                      {numbers?.numbers?.chisongaysinh}
+                      {numbers?.numbers?.ngay_sinh}
                     </Text>
                   </Pressable>
                   <Pressable
@@ -242,12 +242,12 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 7,
-                        num: numbers?.numbers?.truongthanh,
+                        num: numbers?.numbers?.truong_thanh,
                       })
                     }>
                     <Text style={styles.txt3}>Trưởng thành</Text>
                     <Text style={styles.txt2}>
-                      {numbers?.numbers?.truongthanh}
+                      {numbers?.numbers?.truong_thanh}
                     </Text>
                   </Pressable>
                   <Pressable
@@ -255,12 +255,12 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 6,
-                        numberss: numbers.numbers.sothieu,
+                        numberss: numbers?.numbers?.so_thieu,
                       })
                     }>
                     <Text style={styles.txt3}>Thiếu</Text>
                     <Text style={styles.txt2}>
-                      {numbers.numbers.sothieu.join(', ')}
+                      {numbers?.numbers?.so_thieu.join(', ')}
                     </Text>
                   </Pressable>
                   <Pressable
@@ -268,12 +268,12 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 14,
-                        num: numbers.numbers.sucmanhtiemthuc,
+                        num: numbers?.numbers?.suc_manh_tiem_thuc,
                       })
                     }>
                     <Text style={styles.txt3}>SM-TT</Text>
                     <Text style={styles.txt2}>
-                      {numbers?.numbers?.sucmanhtiemthuc}
+                      {numbers?.numbers?.suc_manh_tiem_thuc}
                     </Text>
                   </Pressable>
                   <Pressable
@@ -281,12 +281,12 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 13,
-                        num: numbers.numbers.tuduylitri,
+                        num: numbers?.numbers?.tu_duy_li_tri,
                       })
                     }>
                     <Text style={styles.txt3}>TD-LT</Text>
                     <Text style={styles.txt2}>
-                      {numbers?.numbers?.tuduylitri}
+                      {numbers?.numbers?.tu_duy_li_tri}
                     </Text>
                   </Pressable>
                   <Pressable
@@ -294,47 +294,35 @@ export default function Home({
                     onPress={() =>
                       showData({
                         key: 8,
-                        num: numbers.numbers.chisonam,
+                        num: numbers?.numbers?.chi_so_nam,
                       })
                     }>
                     <Text style={styles.txt3}>Chỉ số năm</Text>
                     <Text style={styles.txt2}>
-                      {numbers?.numbers?.chisonam}
+                      {numbers?.numbers?.chi_so_nam}
                     </Text>
                   </Pressable>
-                  <Pressable
-                    style={styles.round}
-                    onPress={() =>
-                      showData({
-                        key: 15,
-                        num: numbers.numbers.chisothang,
-                      })
-                    }>
-                    <Text style={styles.txt3}>Chỉ số tháng</Text>
-                    <Text style={styles.txt2}>
-                      {numbers?.numbers?.chisothang}
-                    </Text>
-                  </Pressable>
+
                   <Pressable
                     style={styles.round}
                     onPress={() => {
                       showData({
                         key: 9,
                         numberss: [
-                          numbers?.numbers?.chang?.chang1,
-                          numbers?.numbers?.chang?.chang2,
-                          numbers?.numbers?.chang?.chang3,
-                          numbers?.numbers?.chang?.chang4,
+                          numbers?.numbers?.chang?.chang_1,
+                          numbers?.numbers?.chang?.chang_2,
+                          numbers?.numbers?.chang?.chang_3,
+                          numbers?.numbers?.chang?.chang_4,
                         ],
                       });
                     }}>
                     <Text style={styles.txt3}>Chặng</Text>
                     <Text style={styles.txt2}>
                       <Text style={styles.txt2}>
-                        {numbers?.numbers?.chang?.chang1},
-                        {numbers?.numbers?.chang?.chang2},
-                        {numbers?.numbers?.chang?.chang3},
-                        {numbers?.numbers?.chang?.chang4}
+                        {numbers?.numbers?.chang?.chang_1},
+                        {numbers?.numbers?.chang?.chang_2},
+                        {numbers?.numbers?.chang?.chang_3},
+                        {numbers?.numbers?.chang?.chang_4}
                       </Text>
                     </Text>
                   </Pressable>
